@@ -200,85 +200,135 @@ a { color: inherit; }
 }
 .section--dark .section-lede { color: rgba(251,249,244,0.78); }
 
-/* ---------- Timeline ---------- */
-.timeline {
-  position: relative;
+/* ---------- Section variants for single-screen fit ---------- */
+.section--fit {
+  min-height: calc(100vh - 4rem);  /* 4rem = sticky header height */
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+.section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* ---------- Horizontal rail timeline ---------- */
+.rail {
   list-style: none; padding: 0; margin: 0;
-}
-.timeline::before {
-  content: ""; position: absolute;
-  left: 7.5rem; top: 0; bottom: 0; width: 2px;
-  background: var(--navy-100);
-}
-@media (max-width: 640px) {
-  .timeline::before { left: 1.25rem; }
-}
-
-.timeline-item {
-  position: relative;
   display: grid;
-  grid-template-columns: 6rem 1fr;
-  gap: 2rem;
-  padding: 1.25rem 0 1.75rem 0;
-  align-items: start;
-}
-@media (max-width: 640px) {
-  .timeline-item { grid-template-columns: 3rem 1fr; gap: 1rem; }
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0;
+  position: relative;
+  padding-top: 2.75rem;  /* room above for years */
+  padding-bottom: 0.5rem;
 }
 
-.timeline-year {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--navy-700);
-  text-align: right;
-  position: relative;
-  padding-top: 0.1rem;
-}
-@media (max-width: 640px) {
-  .timeline-year { font-size: 1.1rem; text-align: left; }
-}
-
-.timeline-content {
-  position: relative;
-  background: white;
-  border: 1px solid var(--navy-100);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
-  box-shadow: var(--shadow-sm);
-}
-.timeline-content::before {
+/* The connecting line, drawn behind the dots */
+.rail::before {
   content: "";
   position: absolute;
-  top: 1.25rem; left: -2.4rem;
-  width: 14px; height: 14px;
+  top: calc(2.75rem + 8px);  /* aligns to the dot centres */
+  left: 6%; right: 6%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--navy-200) 0%,
+    var(--navy-500) 60%,
+    var(--saffron) 100%
+  );
+  z-index: 0;
+}
+
+.rail-node {
+  position: relative;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+/* Year — sits ABOVE the rail, large and serif */
+.rail-year {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--navy-700);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* Dot — sits ON the rail */
+.rail-dot {
+  display: block;
+  width: 16px; height: 16px;
+  margin: 1.75rem auto 1rem;
   border-radius: 50%;
   background: var(--paper);
   border: 3px solid var(--navy-500);
-  box-shadow: 0 0 0 4px var(--paper);
+  position: relative;
   z-index: 1;
+  box-shadow: 0 0 0 4px var(--paper);
+  transition: transform .2s, box-shadow .2s;
 }
-@media (max-width: 640px) {
-  .timeline-content::before { left: -1.95rem; top: 1.1rem; }
-}
-.timeline-content h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700; font-size: 1.15rem;
-  color: var(--navy-900);
-  margin-bottom: 0.35rem;
-}
-.timeline-content p {
-  color: var(--navy-700);
-  font-size: 0.97rem;
+.rail-node:hover .rail-dot {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 8px rgba(30,65,115,0.12);
 }
 
-.timeline-item--highlight .timeline-content {
-  background: linear-gradient(135deg, #ffffff 0%, #fff7ec 100%);
-  border-color: var(--saffron);
+/* Title + text — sit BELOW the rail */
+.rail-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: var(--navy-900);
+  margin-bottom: 0.3rem;
 }
-.timeline-item--highlight .timeline-content::before {
+.rail-text {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--navy-700);
+}
+
+/* Final node — saffron emphasis for the milestone year */
+.rail-node--highlight .rail-year {
+  color: var(--saffron);
+  font-size: 1.6rem;
+}
+.rail-node--highlight .rail-dot {
   background: var(--saffron);
   border-color: var(--saffron);
+  width: 22px; height: 22px;
+  margin-top: 1.55rem;  /* compensate for the larger size to keep it on the line */
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 9px rgba(255,153,51,0.22);
+}
+.rail-node--highlight .rail-title { color: var(--navy-900); }
+
+/* ---------- Rail responsive ---------- */
+/* Tablet: 4 columns × 2 rows. The single connecting line is dropped;
+   each row gets its own short rail-segment via ::after on rail-node. */
+@media (max-width: 900px) {
+  .rail { grid-template-columns: repeat(4, 1fr); row-gap: 2.5rem; }
+  .rail::before { display: none; }
+  .rail-node::after {
+    content: "";
+    position: absolute;
+    top: calc(2.75rem + 8px);
+    left: 50%; right: -50%;
+    height: 2px;
+    background: var(--navy-200);
+    z-index: 0;
+  }
+  .rail-node:nth-child(4n)::after { display: none; }   /* end of each row */
+  .rail-node--highlight::after { display: none; }
+}
+
+/* Mobile: 2 columns × 4 rows. Same row-segment trick. */
+@media (max-width: 540px) {
+  .rail { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; padding-top: 2.25rem; }
+  .rail-node::after { display: none; }   /* lines get noisy on small screens */
+  .rail-year { font-size: 1.15rem; }
+  .rail-title { font-size: 0.9rem; }
+  .rail-text { font-size: 0.75rem; }
+  .rail-node--highlight .rail-year { font-size: 1.35rem; }
+  .section--fit { min-height: 0; padding: 4rem 0; }   /* let mobile breathe */
 }
 
 /* ---------- Message section ---------- */
