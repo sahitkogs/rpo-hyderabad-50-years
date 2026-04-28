@@ -204,10 +204,76 @@ a { color: inherit; }
 .section--fit {
   min-height: calc(100vh - 4rem);  /* 4rem = sticky header height */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding: 3rem 0;
 }
 .section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* ---------- Journey section (#history) — composes with .section--fit ---------- */
+.section--journey {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(255,153,51,0.05), transparent 55%),
+    radial-gradient(ellipse at 15% 90%, rgba(30,65,115,0.04), transparent 55%),
+    var(--paper);
+}
+
+.journey-watermark {
+  position: absolute;
+  top: 50%; right: -3vw;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(20rem, 38vw, 36rem);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: var(--navy-900);
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.journey-header {
+  text-align: center;
+  max-width: 64ch;
+  margin: 0 auto clamp(2.5rem, 7vh, 5rem);
+}
+
+.journey-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--navy-900);
+  margin-bottom: 1rem;
+}
+.journey-title__accent {
+  color: var(--navy-500);
+  font-style: italic;
+  position: relative;
+  white-space: nowrap;
+}
+.journey-title__accent::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -0.15em;
+  height: 0.18em;
+  background: var(--saffron);
+  border-radius: 2px;
+  opacity: 0.4;
+}
+
+.journey-lede {
+  margin: 0 auto;
+  max-width: 56ch;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--navy-700);
+}
 
 /* ---------- Horizontal rail timeline ---------- */
 .rail {
@@ -300,6 +366,45 @@ a { color: inherit; }
   box-shadow: 0 0 0 4px var(--paper), 0 0 0 9px rgba(255,153,51,0.22);
 }
 .rail-node--highlight .rail-title { color: var(--navy-900); }
+
+/* ---------- Rail BIG variant — used on the journey section ---------- */
+.rail--big {
+  padding-top: 3.5rem;
+  padding-bottom: 1rem;
+}
+.rail--big::before {
+  top: calc(3.5rem + 9px);
+  height: 3px;
+  border-radius: 2px;
+}
+.rail--big .rail-year {
+  font-size: 1.85rem;
+}
+.rail--big .rail-dot {
+  width: 18px; height: 18px;
+  margin: 2.4rem auto 1.25rem;
+  border-width: 3px;
+  box-shadow: 0 0 0 5px var(--paper);
+}
+.rail--big .rail-node:hover .rail-dot {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 5px var(--paper), 0 0 0 10px rgba(30,65,115,0.14);
+}
+.rail--big .rail-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+.rail--big .rail-text {
+  font-size: 0.85rem;
+}
+.rail--big .rail-node--highlight .rail-year {
+  font-size: 2.3rem;
+}
+.rail--big .rail-node--highlight .rail-dot {
+  width: 26px; height: 26px;
+  margin-top: 2.0rem;   /* keep dot centred on the line despite larger size */
+  box-shadow: 0 0 0 5px var(--paper), 0 0 0 11px rgba(255,153,51,0.22);
+}
 
 /* ---------- Rail responsive ---------- */
 /* Tablet: 4 columns × 2 rows. The single connecting line is dropped;
