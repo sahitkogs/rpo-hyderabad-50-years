@@ -3,6 +3,21 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Language toggle: flip the .lang-en / .lang-te class on <html>, and keep
+  // the html[lang] attribute in sync so screen readers and search engines
+  // see the right language. The CSS handles which translation is visible;
+  // this just swaps the master switch.
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isEn = html.classList.contains('lang-en');
+      html.classList.toggle('lang-en', !isEn);
+      html.classList.toggle('lang-te', isEn);
+      html.lang = isEn ? 'te' : 'en';
+    });
+  }
+
   // Mobile nav toggle
   const toggle = document.getElementById('menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
@@ -44,41 +59,4 @@
     sections.forEach((s) => observer.observe(s));
   }
 
-  // Video card click — when a real YouTube ID is present, lazy-load the iframe.
-  // Until then, cards are inert "Coming soon" placeholders.
-  document.querySelectorAll('.video-card[data-video-id]').forEach((card) => {
-    const id = card.getAttribute('data-video-id');
-    if (!id) return;
-
-    const thumb = card.querySelector('.video-thumb');
-    if (!thumb) return;
-
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.style.cursor = 'pointer';
-
-    const load = () => {
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-      iframe.title = card.querySelector('h3')?.textContent || 'Video';
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.style.width = '100%';
-      iframe.style.height = '100%';
-      iframe.style.border = '0';
-
-      const wrapper = document.createElement('div');
-      wrapper.className = 'video-thumb video-thumb--loaded';
-      wrapper.appendChild(iframe);
-      thumb.replaceWith(wrapper);
-    };
-
-    card.addEventListener('click', load);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        load();
-      }
-    });
-  });
 })();

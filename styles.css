@@ -14,6 +14,7 @@
   --green:    #138808;
   --paper:    #FBF9F4;
   --ink:      #1A1A1A;
+  --verify:   #7B1F2D;  /* Verification Stamp: deep oxblood for dates, citations, archival authority */
 
   --radius-sm: 6px;
   --radius:    12px;
@@ -30,13 +31,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
 body { line-height: 1.55; }
 
-::selection { background: var(--saffron); color: var(--navy-900); }
+::selection { background: var(--navy-100); color: var(--navy-900); }
 
 a { color: inherit; }
 .link { color: var(--navy-700); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--navy-200); transition: color .15s, text-decoration-color .15s; }
-.link:hover { color: var(--navy-900); text-decoration-color: var(--saffron); }
+.link:hover { color: var(--navy-900); text-decoration-color: var(--navy-900); }
 .link--light { color: var(--paper); text-decoration-color: rgba(255,255,255,0.4); }
-.link--light:hover { color: var(--saffron); text-decoration-color: var(--saffron); }
+.link--light:hover { color: var(--paper); text-decoration-color: var(--paper); }
 
 /* Skip link */
 .skip-link {
@@ -47,28 +48,13 @@ a { color: inherit; }
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
 
-/* Focus visibility */
+/* Focus visibility — adapts to context via currentColor (navy on paper, paper on navy) */
 :focus { outline: none; }
 :focus-visible {
-  outline: 2px solid var(--saffron);
+  outline: 2px solid currentColor;
   outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ---------- Tricolour bar (decorative accent) ---------- */
-.tricolour-bar {
-  display: inline-block;
-  width: 4px; height: 28px;
   border-radius: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--saffron) 0%, var(--saffron) 33.33%,
-    #ffffff      33.33%, #ffffff      66.66%,
-    var(--green) 66.66%, var(--green) 100%
-  );
-  box-shadow: 0 0 0 1px rgba(11,37,69,0.08);
 }
-.tricolour-bar--light { box-shadow: 0 0 0 1px rgba(255,255,255,0.18); }
 
 /* ---------- Nav ---------- */
 .nav-link {
@@ -80,7 +66,7 @@ a { color: inherit; }
 .nav-link.is-active { color: var(--navy-900); }
 .nav-link.is-active::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
-  height: 2px; background: var(--saffron); border-radius: 2px;
+  height: 2px; background: var(--navy-900); border-radius: 2px;
 }
 
 /* ---------- Buttons ---------- */
@@ -94,72 +80,155 @@ a { color: inherit; }
 }
 .btn:active { transform: translateY(1px); }
 .btn-primary {
-  background: var(--saffron); color: var(--navy-900);
+  background: var(--navy-900); color: var(--paper);
   box-shadow: var(--shadow-sm);
 }
-.btn-primary:hover { background: #ffae5c; box-shadow: var(--shadow); }
+.btn-primary:hover { background: var(--navy-700); box-shadow: var(--shadow); }
 .btn-ghost {
   background: transparent; color: var(--paper);
   border: 1px solid rgba(255,255,255,0.35);
 }
 .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
 
-/* ---------- Hero ---------- */
-.hero {
-  background: radial-gradient(ellipse at top right, #143258 0%, var(--navy-900) 60%);
-  color: var(--paper);
+/* ---------- Civic Mark ---------- */
+/* The compliant 1:1:1 tricolour mark. Used at exactly four ceremonial moments
+   across the site: header, history break, anniversary band, footer signature.
+   Never as decoration, never as a single ribbon used alone. */
+.civic-mark {
+  display: inline-grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 36px;
+  height: 24px;
+  border: 1px solid rgba(11, 37, 69, 0.18);
+  border-radius: 1px;
+  flex-shrink: 0;
 }
-.hero-pattern {
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(circle at 18% 30%, rgba(255,153,51,0.12), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(19,136,8,0.10), transparent 40%);
-  pointer-events: none;
+.civic-mark__band--saffron { background: var(--saffron); }
+.civic-mark__band--white   { background: #ffffff; }  /* Ceremonial White: only valid inside the Civic Mark */
+.civic-mark__band--green   { background: var(--green); }
+
+/* Header-scale variant: smaller, sits inline with the brand wordmark. */
+.civic-mark--sm {
+  width: 24px;
+  height: 16px;
 }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: .65rem;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 1.25rem;
+/* For dark surfaces (footer): the border edge tints to paper instead of ink. */
+.civic-mark--on-dark {
+  border-color: rgba(251, 249, 244, 0.22);
 }
 
-/* "50" anniversary mark */
-.anniversary-mark {
-  width: 240px; height: 240px;
-  border-radius: 50%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background:
-    radial-gradient(circle at 30% 25%, rgba(255,153,51,0.18), transparent 60%),
-    rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.04);
-  text-align: center;
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--paper);
+  color: var(--navy-900);
   position: relative;
 }
-.anniversary-mark::before,
-.anniversary-mark::after {
-  content: ""; position: absolute; inset: 12px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255,255,255,0.18);
+
+.hero-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 9vh, 7rem) 1.5rem clamp(4rem, 12vh, 8rem);
 }
-.anniversary-mark::after { inset: 22px; border-style: solid; border-color: rgba(255,153,51,0.25); }
-.anniversary-mark__years {
+
+.hero-stamp {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+.hero-dateline-eyebrow {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--navy-700);
+}
+
+/* Headline: "50" + "Years of Serving Citizens." set as one editorial unit.
+   Mobile: stacked, words below the numeral. Desktop: baseline-aligned side-by-side. */
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 7rem; font-weight: 700; line-height: 1;
-  color: var(--saffron);
-  letter-spacing: -0.04em;
+  font-weight: 700;
+  color: var(--navy-900);
+  letter-spacing: -0.025em;
+  margin: 0;
 }
-.anniversary-mark__label {
-  margin-top: .25rem;
-  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.75);
+.hero-headline__numeral {
+  font-size: clamp(6rem, 14vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  font-variant-numeric: lining-nums;
 }
-.anniversary-mark__dates {
-  margin-top: .35rem;
-  font-size: 0.75rem; letter-spacing: 0.18em;
-  color: rgba(255,255,255,0.5);
+.hero-headline__words {
+  font-size: clamp(2rem, 4.6vw, 4.25rem);
+  line-height: 1.05;
+  font-weight: 600;
+  max-width: 18ch;
+}
+
+/* At wider viewports, lay the numeral and words side-by-side, baseline-aligned,
+   so the headline reads as a single editorial unit. */
+@media (min-width: 720px) {
+  .hero-headline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25em 0.5em;
+  }
+}
+
+.hero-dateline {
+  margin: clamp(1.5rem, 4vh, 2.5rem) 0 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--verify);
+  font-variant-numeric: lining-nums;
+}
+
+.hero-body {
+  margin: clamp(2rem, 5vh, 3rem) 0 0;
+  max-width: 56ch;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--navy-700);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: clamp(2rem, 5vh, 3rem);
+  color: var(--navy-900);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--navy-500);
+  text-underline-offset: 0.4em;
+  transition: text-decoration-thickness 160ms cubic-bezier(0.22, 1, 0.36, 1),
+              text-decoration-color 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-cta__arrow {
+  display: inline-block;
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-cta:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--navy-900);
+}
+.hero-cta:hover .hero-cta__arrow { transform: translateX(3px); }
+.hero-cta:focus-visible {
+  outline: 2px solid var(--navy-700);
+  outline-offset: 4px;
+  border-radius: 1px;
 }
 
 /* ---------- Sections ---------- */
@@ -179,7 +248,7 @@ a { color: inherit; }
   margin-bottom: 0.85rem;
   display: inline-block;
 }
-.eyebrow--light { color: var(--saffron); }
+.eyebrow--light { color: rgba(251, 249, 244, 0.7); }
 
 .section-title {
   font-family: 'Playfair Display', Georgia, serif;
@@ -214,10 +283,7 @@ a { color: inherit; }
 .section--journey {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 85% 10%, rgba(255,153,51,0.05), transparent 55%),
-    radial-gradient(ellipse at 15% 90%, rgba(30,65,115,0.04), transparent 55%),
-    var(--paper);
+  background: var(--paper);
 }
 
 .journey-watermark {
@@ -241,6 +307,12 @@ a { color: inherit; }
   max-width: 64ch;
   margin: 0 auto clamp(2.5rem, 7vh, 5rem);
 }
+.journey-mark {
+  display: grid;
+  margin: 0 auto 1.25rem;
+  width: 30px;
+  height: 20px;
+}
 
 .journey-title {
   font-family: 'Playfair Display', Georgia, serif;
@@ -260,11 +332,9 @@ a { color: inherit; }
 .journey-title__accent::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -0.15em;
-  height: 0.18em;
-  background: var(--saffron);
-  border-radius: 2px;
-  opacity: 0.4;
+  left: 0; right: 0; bottom: -0.12em;
+  height: 1px;
+  background: var(--navy-200);
 }
 
 .journey-lede {
@@ -292,13 +362,8 @@ a { color: inherit; }
   position: absolute;
   top: calc(2.75rem + 8px);  /* aligns to the dot centres */
   left: 6%; right: 6%;
-  height: 2px;
-  background: linear-gradient(
-    to right,
-    var(--navy-200) 0%,
-    var(--navy-500) 60%,
-    var(--saffron) 100%
-  );
+  height: 1px;
+  background: var(--navy-200);
   z-index: 0;
 }
 
@@ -353,17 +418,18 @@ a { color: inherit; }
   color: var(--navy-700);
 }
 
-/* Final node — saffron emphasis for the milestone year */
+/* Final node — Verification Stamp (oxblood) emphasis for the milestone year.
+   Numerals Rule: dates and milestone numbers carry archival authority. */
 .rail-node--highlight .rail-year {
-  color: var(--saffron);
+  color: var(--verify);
   font-size: 1.6rem;
 }
 .rail-node--highlight .rail-dot {
-  background: var(--saffron);
-  border-color: var(--saffron);
+  background: var(--verify);
+  border-color: var(--verify);
   width: 22px; height: 22px;
   margin-top: 1.55rem;  /* compensate for the larger size to keep it on the line */
-  box-shadow: 0 0 0 4px var(--paper), 0 0 0 9px rgba(255,153,51,0.22);
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 9px rgba(123, 31, 45, 0.18);
 }
 .rail-node--highlight .rail-title { color: var(--navy-900); }
 
@@ -403,7 +469,7 @@ a { color: inherit; }
 .rail--big .rail-node--highlight .rail-dot {
   width: 26px; height: 26px;
   margin-top: 2.0rem;   /* keep dot centred on the line despite larger size */
-  box-shadow: 0 0 0 5px var(--paper), 0 0 0 11px rgba(255,153,51,0.22);
+  box-shadow: 0 0 0 5px var(--paper), 0 0 0 11px rgba(123, 31, 45, 0.18);
 }
 
 /* ---------- Rail responsive ---------- */
@@ -436,61 +502,80 @@ a { color: inherit; }
   .section--fit { min-height: 0; padding: 4rem 0; }   /* let mobile breathe */
 }
 
-/* ---------- Message section ---------- */
-.portrait {
-  background: white;
-  border: 1px solid var(--navy-100);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
+/* ---------- Message section ----------
+   Signed letter from the Regional Passport Officer. A printed dispatch on
+   Warm Paper: single column, generous left margin, body in serif, signature
+   block right-aligned at the foot. No portrait, no card, no border. */
+.letter {
+  max-width: 60ch;        /* tighter than body 65-75ch — letters read better narrow */
+  margin: 0 auto 0 0;     /* left-aligned column with intentional right margin */
+  padding-left: clamp(0rem, 4vw, 3rem);  /* printed-page left margin on wider viewports */
 }
-.portrait-img {
-  display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
-  background: var(--navy-50);
+@media (min-width: 768px) {
+  .letter {
+    margin-left: clamp(0rem, 8vw, 4rem);
+  }
 }
-.portrait-caption { padding: 1rem 1.25rem; }
-
-.bio-panel {
-  margin-top: 1.5rem;
-  list-style: none; padding: 0;
-  background: white;
-  border: 1px solid var(--navy-100);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  font-size: 0.92rem;
-}
-.bio-panel li {
-  padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid var(--navy-100);
-  color: var(--navy-700);
-}
-.bio-panel li:last-child { border-bottom: 0; }
-.bio-panel li span {
-  display: block;
-  text-transform: uppercase;
-  font-size: 0.7rem; letter-spacing: 0.16em;
-  color: var(--navy-500);
-  margin-bottom: 0.2rem;
+.letter-eyebrow {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--navy-500);
+  margin-bottom: 1.25rem;
 }
-
-.prose-block {
-  margin-top: 1.5rem;
-  font-size: 1.05rem;
-  color: var(--navy-700);
-  max-width: 60ch;
+.letter-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--navy-900);
+  margin: 0 0 1rem;
+  max-width: 22ch;
 }
-.prose-block p + p { margin-top: 1rem; }
-
-.placeholder-note {
-  background: #fff7ec;
-  border-left: 3px solid var(--saffron);
-  padding: .75rem 1rem;
-  font-style: italic;
+.letter-dateline {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--verify);
+  margin: 0 0 clamp(2rem, 4vh, 2.75rem);
+}
+.letter-body {
+  font-family: 'Playfair Display', Georgia, serif;  /* serif body — printed-letter register */
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--navy-900);
+}
+.letter-body p {
+  margin: 0 0 1.25rem;
+}
+.letter-body p:last-of-type {
+  margin-bottom: clamp(2.5rem, 5vh, 3.5rem);
+}
+.letter-signature {
+  text-align: right;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--navy-900);
+}
+.letter-signature__name {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.005em;
+}
+.letter-signature__title {
+  display: block;
+  margin-top: 0.15rem;
   color: var(--navy-700);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* ---------- Achievement grid ---------- */
@@ -500,7 +585,7 @@ a { color: inherit; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 .achievement-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--navy-100);
   border-radius: var(--radius);
   padding: 1.75rem;
@@ -528,7 +613,7 @@ a { color: inherit; }
   border-color: var(--navy-900);
   color: var(--paper);
 }
-.achievement-card--highlight .achievement-stat { color: var(--saffron); }
+.achievement-card--highlight .achievement-stat { color: var(--paper); }
 .achievement-card--highlight .achievement-label { color: rgba(251,249,244,0.85); }
 
 /* ---------- Reform grid ---------- */
@@ -538,12 +623,11 @@ a { color: inherit; }
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .reform-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--navy-100);
   border-radius: var(--radius);
   padding: 1.5rem 1.5rem 1.6rem;
   box-shadow: var(--shadow-sm);
-  border-top: 3px solid var(--saffron);
 }
 .reform-card h3 {
   font-family: 'Playfair Display', Georgia, serif;
@@ -553,120 +637,87 @@ a { color: inherit; }
 }
 .reform-card p { color: var(--navy-700); font-size: 0.95rem; }
 
-/* ---------- Testimonials ---------- */
-.testimonial-grid {
-  list-style: none; padding: 0; margin: 0;
-  display: grid; gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* ---------- Videos: editorial pre-launch list ----------
+   A numbered table of contents listing the 19 forthcoming Telugu FAQ videos,
+   one per service area on passportindia.gov.in. No card chrome, no fake play
+   buttons, no inert click affordances. Reads as the front matter of an
+   exhibition catalogue. */
+.videolist-header {
+  max-width: 60ch;
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
 }
-.testimonial-card {
-  background: white;
-  border: 1px solid var(--navy-100);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  position: relative;
-  box-shadow: var(--shadow-sm);
-}
-.testimonial-card::before {
-  content: "“";
-  position: absolute; top: 0.4rem; left: 1rem;
+.videolist-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 4rem; line-height: 1;
-  color: var(--saffron);
-  opacity: 0.4;
-}
-.testimonial-card blockquote { margin: 0; }
-.testimonial-card blockquote p {
-  font-size: 1.05rem;
-  color: var(--navy-900);
-  font-style: italic;
-  position: relative;
-  z-index: 1;
-}
-.testimonial-author {
-  margin-top: 1rem;
-  color: var(--navy-500);
-  font-size: 0.88rem;
-}
-.placeholder-tag {
-  display: inline-block;
-  margin-left: .35rem;
-  padding: 1px 6px;
-  background: var(--navy-100);
-  color: var(--navy-700);
-  border-radius: 999px;
-  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--navy-900);
+  margin: 0 0 0.85rem;
+}
+.videolist-dateline {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--verify);
+  margin: 0 0 1.5rem;
+}
+.videolist-intro {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--navy-700);
+  margin: 0;
 }
 
-/* ---------- Video grid ---------- */
-.video-grid {
-  list-style: none; padding: 0; margin: 0;
-  display: grid; gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+.videolist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem 3rem;
+  counter-reset: videolist;
 }
-.video-card {
-  background: white;
-  border: 1px solid var(--navy-100);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  display: flex; flex-direction: column;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
+@media (min-width: 768px) {
+  .videolist {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-.video-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  border-color: var(--navy-200);
+
+.videolist-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: baseline;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--navy-100);
 }
-.video-thumb {
-  aspect-ratio: 16 / 9;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,153,51,0.18), transparent 60%),
-    linear-gradient(135deg, var(--navy-900), var(--navy-700));
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-}
-.video-thumb::before {
-  content: "";
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.16);
-  border: 1px solid rgba(255,255,255,0.35);
-}
-.video-thumb::after {
-  content: "";
-  position: absolute;
-  width: 0; height: 0;
-  border-left: 14px solid var(--paper);
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  margin-left: 4px;
-}
-.video-soon {
-  position: absolute; top: 0.75rem; right: 0.75rem;
-  background: var(--saffron); color: var(--navy-900);
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-}
-.video-meta { padding: 1.1rem 1.25rem 1.35rem; }
-.video-num {
+.videolist-item__num {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 0.85rem; color: var(--saffron); font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--verify);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
 }
-.video-meta h3 {
+.videolist-item__title {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.05rem; font-weight: 700;
-  color: var(--navy-900);
-  margin: 0.15rem 0 0.4rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   line-height: 1.25;
+  color: var(--navy-900);
+  margin: 0 0 0.4rem;
 }
-.video-meta p { color: var(--navy-700); font-size: 0.9rem; }
+.videolist-item__summary {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--navy-700);
+  margin: 0;
+  grid-column: 2;
+}
 
 /* ---------- Services grid ---------- */
 .services-grid {
@@ -674,7 +725,7 @@ a { color: inherit; }
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 .service-block {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--navy-100);
   border-radius: var(--radius);
   padding: 1.5rem 1.6rem;
@@ -719,10 +770,10 @@ a { color: inherit; }
   margin-bottom: 2.5rem;
 }
 .contact-block h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700; font-size: 0.95rem;
-  text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--saffron);
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 600; font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: rgba(251, 249, 244, 0.6);
   margin-bottom: 0.6rem;
 }
 .contact-block p, .contact-block li {
@@ -738,8 +789,8 @@ a { color: inherit; }
   text-underline-offset: 3px;
 }
 .contact-block a:hover {
-  color: var(--saffron);
-  text-decoration-color: var(--saffron);
+  color: var(--paper);
+  text-decoration-color: var(--paper);
 }
 
 .map-embed {
@@ -748,20 +799,112 @@ a { color: inherit; }
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow: var(--shadow-lg);
   aspect-ratio: 16 / 7;
-  background: #000;
+  background: var(--navy-700);
 }
 .map-embed iframe {
   width: 100%; height: 100%; border: 0;
-  filter: saturate(0.9);
 }
 
 /* ---------- Footer ---------- */
 .site-footer {
   background: #07182f;
   color: var(--paper);
-  border-top: 3px solid var(--saffron);
+  border-top: 1px solid rgba(251, 249, 244, 0.08);
 }
 .site-footer a { color: var(--paper); }
+.footer-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Bilingual rendering: English / Telugu ----------
+   Strategy: every translatable element ships both .t-en and .t-te children
+   in the DOM. A class on <html> (.lang-en or .lang-te) hides the off-language.
+   No JS needed for the visibility itself; JS only flips the class on click.
+
+   The .t-en/.t-te scope is intentional — it doesn't catch links or code that
+   carry a natural lang attribute, only the explicit translation siblings. */
+.lang-en .t-te,
+.lang-te .t-en {
+  display: none;
+}
+
+/* Telugu typography: Mandali for display, Noto Sans Telugu for body.
+   Applied via the lang attribute, so any element marked lang="te" gets the
+   Telugu face automatically regardless of where it sits in the cascade. */
+[lang="te"] {
+  font-family: 'Noto Sans Telugu', 'Mandali', system-ui, sans-serif;
+  font-feature-settings: "kern";
+}
+
+/* Display Telugu uses Mandali for editorial weight at headline scale. */
+.hero-headline [lang="te"],
+.hero-dateline[lang="te"],
+.videolist-headline [lang="te"],
+.section-title [lang="te"],
+.service-block h3 [lang="te"] {
+  font-family: 'Mandali', 'Noto Sans Telugu', system-ui, sans-serif;
+}
+
+/* Telugu text often runs taller than Latin at the same px size due to
+   ascender/descender depth. Tighten line-height slightly to compensate. */
+[lang="te"] {
+  line-height: 1.45;
+}
+.hero-headline [lang="te"],
+.videolist-headline [lang="te"] {
+  line-height: 1.25;
+}
+
+/* ---------- Language toggle button ---------- */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--navy-900);
+  background: transparent;
+  border: 1px solid var(--navy-200);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.lang-toggle:hover {
+  background: var(--navy-50);
+  border-color: var(--navy-500);
+}
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--navy-700);
+  outline-offset: 3px;
+}
+.lang-toggle__current {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--navy-500);
+}
+.lang-toggle__target[lang="te"] {
+  font-family: 'Mandali', sans-serif;
+}
+
+/* The "draft translations" disclosure note that lives at the foot of the
+   videos section. Only visible in Telugu mode — no need to disclose
+   English-side accuracy to English readers. */
+.translations-note {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--navy-100);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--navy-500);
+  max-width: 60ch;
+}
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
