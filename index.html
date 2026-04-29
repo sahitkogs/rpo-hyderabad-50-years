@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="lang-en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>50 Years of Service — Regional Passport Office, Hyderabad (1976–2026)</title>
+  <title>50 Years of Service. Regional Passport Office, Hyderabad. 1976 to 2026.</title>
   <meta name="description" content="A commemorative microsite marking 50 years of the Regional Passport Office, Hyderabad. History, achievements, citizen-centric reforms, and an upcoming Telugu FAQ video library.">
   <meta name="theme-color" content="#0B2545">
 
   <!-- Open Graph / social preview -->
-  <meta property="og:title" content="50 Years of Service — RPO Hyderabad">
-  <meta property="og:description" content="Marking 50 years of the Regional Passport Office, Hyderabad (1976–2026).">
+  <meta property="og:title" content="50 Years of Service. RPO Hyderabad, 1976 to 2026.">
+  <meta property="og:description" content="Marking 50 years of the Regional Passport Office, Hyderabad. 1976 to 2026.">
   <meta property="og:image" content="assets/placeholder.svg">
   <meta property="og:type" content="website">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Mandali&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind via Play CDN (prototype-only; switch to a build for production) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -61,11 +61,10 @@
   <!-- ============== HEADER / STICKY NAV ============== -->
   <header id="site-header" class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-navy-100">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between h-16">
-      <a href="#top" class="flex items-center gap-3 group" aria-label="RPO Hyderabad — home">
-        <span class="tricolour-bar" aria-hidden="true"></span>
+      <a href="#top" class="flex items-center group" aria-label="RPO Hyderabad, home">
         <span class="font-serif text-lg font-semibold text-navy-900 leading-tight">
           RPO Hyderabad
-          <span class="block text-[10px] uppercase tracking-[0.18em] text-navy-500 font-sans font-medium">50 Years · 1976–2026</span>
+          <span class="block text-[10px] uppercase tracking-[0.18em] text-navy-500 font-sans font-medium">50 Years · 1976 to 2026</span>
         </span>
       </a>
 
@@ -80,14 +79,27 @@
         </ul>
       </nav>
 
-      <button id="menu-toggle" class="md:hidden p-2 -mr-2 text-navy-900" aria-controls="mobile-nav" aria-expanded="false">
-        <span class="sr-only">Open menu</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <line x1="4" y1="7"  x2="20" y2="7"/>
-          <line x1="4" y1="12" x2="20" y2="12"/>
-          <line x1="4" y1="17" x2="20" y2="17"/>
-        </svg>
-      </button>
+      <div class="flex items-center gap-3">
+        <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Switch language">
+          <span class="lang-toggle__current">
+            <span class="t-en">EN</span>
+            <span class="t-te">తె</span>
+          </span>
+          <span class="lang-toggle__target">
+            <span class="t-en" lang="te">తెలుగు</span>
+            <span class="t-te" lang="en">English</span>
+          </span>
+        </button>
+
+        <button id="menu-toggle" class="md:hidden p-2 -mr-2 text-navy-900" aria-controls="mobile-nav" aria-expanded="false">
+          <span class="sr-only">Open menu</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="4" y1="7"  x2="20" y2="7"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <nav id="mobile-nav" aria-label="Mobile" class="md:hidden hidden border-t border-navy-100 bg-paper">
@@ -105,44 +117,43 @@
   <main id="main">
 
     <!-- ============== HERO ============== -->
-    <section id="top" class="hero relative overflow-hidden">
-      <div class="hero-pattern" aria-hidden="true"></div>
+    <section id="top" class="hero">
+      <div class="hero-inner">
+        <p class="hero-stamp">
+          <span class="civic-mark" role="img" aria-label="Tricolour, the national flag of India">
+            <span class="civic-mark__band--saffron"></span>
+            <span class="civic-mark__band--white"></span>
+            <span class="civic-mark__band--green"></span>
+          </span>
+          <span class="hero-dateline-eyebrow">
+            <span class="t-en">Regional Passport Office, Hyderabad</span>
+            <span class="t-te" lang="te">ప్రాంతీయ పాస్‌పోర్ట్ కార్యాలయం, హైదరాబాద్</span>
+          </span>
+        </p>
 
-      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 md:py-28 lg:py-32">
-        <div class="grid lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-8 text-paper">
-            <p class="hero-eyebrow">
-              <span class="tricolour-bar tricolour-bar--light" aria-hidden="true"></span>
-              Regional Passport Office, Hyderabad
-            </p>
-            <h1 class="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
-              50 Years of Serving Citizens
-              <span class="block text-saffron mt-2">1976 — 2026</span>
-            </h1>
-            <p class="mt-6 max-w-prose text-lg text-paper/85 leading-relaxed">
-              Five decades of service, reform, and trust. From a newly bifurcated office in 1976 to a national-award-winning passport seva today — this is the story of how RPO Hyderabad keeps showing up for the people of Telangana.
-            </p>
+        <h1 class="hero-headline">
+          <span class="hero-headline__numeral">50</span>
+          <span class="hero-headline__words">
+            <span class="t-en">Years of Serving Citizens.</span>
+            <span class="t-te" lang="te">సంవత్సరాల పౌర సేవ.</span>
+          </span>
+        </h1>
 
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="#videos" class="btn btn-primary">Watch FAQ Videos</a>
-              <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="btn btn-ghost">
-                Apply for a Passport
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="ml-1.5">
-                  <path d="M7 17L17 7M9 7h8v8"/>
-                </svg>
-              </a>
-              <a href="#contact" class="btn btn-ghost">Contact the Office</a>
-            </div>
-          </div>
+        <p class="hero-dateline">
+          <span class="t-en">1976 to 2026.</span>
+          <span class="t-te" lang="te">1976 నుండి 2026 వరకు.</span>
+        </p>
 
-          <div class="lg:col-span-4 hidden lg:flex justify-center">
-            <div class="anniversary-mark" aria-hidden="true">
-              <span class="anniversary-mark__years">50</span>
-              <span class="anniversary-mark__label">Years of Service</span>
-              <span class="anniversary-mark__dates">1976 · 2026</span>
-            </div>
-          </div>
-        </div>
+        <p class="hero-body">
+          <span class="t-en">A commemorative record of fifty years of citizen service by the Regional Passport Office, Hyderabad. This site is not the application portal; for passport services, see <a class="link" href="https://www.passportindia.gov.in" target="_blank" rel="noopener">passportindia.gov.in</a>.</span>
+          <span class="t-te" lang="te">హైదరాబాద్‌లోని ప్రాంతీయ పాస్‌పోర్ట్ కార్యాలయం యొక్క యాభై సంవత్సరాల పౌర సేవకు ఒక స్మారక చిహ్నం. ఇది దరఖాస్తు పోర్టల్ కాదు; పాస్‌పోర్ట్ సేవల కోసం, <a class="link" href="https://www.passportindia.gov.in" target="_blank" rel="noopener">passportindia.gov.in</a> చూడండి.</span>
+        </p>
+
+        <a href="#history" class="hero-cta">
+          <span class="t-en">Read the 50-year story</span>
+          <span class="t-te" lang="te">50 సంవత్సరాల కథను చదవండి</span>
+          <span class="hero-cta__arrow" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
     </section>
 
@@ -151,9 +162,14 @@
       <span class="journey-watermark" aria-hidden="true">50</span>
       <div class="mx-auto max-w-6xl px-4 sm:px-6 w-full relative z-10">
         <header class="journey-header">
+          <span class="civic-mark journey-mark" role="img" aria-label="Tricolour, the national flag of India">
+            <span class="civic-mark__band--saffron"></span>
+            <span class="civic-mark__band--white"></span>
+            <span class="civic-mark__band--green"></span>
+          </span>
           <p class="eyebrow">A Journey of 50 Years</p>
           <h2 class="journey-title">Five decades, <span class="journey-title__accent">eight moments.</span></h2>
-          <p class="journey-lede">From a newly bifurcated office in 1976 to a national-award-winning passport seva today — a story told in the moments that mattered most.</p>
+          <p class="journey-lede">From a newly bifurcated office in 1976 to a national-award-winning passport seva today, a story told in the moments that mattered most.</p>
         </header>
 
         <ol class="rail rail--big" aria-label="RPO Hyderabad timeline">
@@ -209,44 +225,8 @@
       </div>
     </section>
 
-    <!-- ============== SECTION 3 — MESSAGE FROM THE RPO ============== -->
-    <section id="message" class="section section--alt">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="grid md:grid-cols-12 gap-10 md:gap-12 items-start">
-          <div class="md:col-span-4">
-            <figure class="portrait">
-              <img src="assets/placeholder.svg" alt="Portrait of Jonnalagadda Snehaja, IFS — Regional Passport Officer, Hyderabad" class="portrait-img">
-              <figcaption class="portrait-caption">
-                <span class="block font-serif text-xl font-semibold text-navy-900">Jonnalagadda Snehaja, IFS</span>
-                <span class="block text-sm text-navy-700 mt-0.5">Regional Passport Officer, Hyderabad</span>
-              </figcaption>
-            </figure>
-
-            <ul class="bio-panel">
-              <li><span>Service</span> Indian Foreign Service, 2016 batch</li>
-              <li><span>Charge assumed</span> 24 November 2023</li>
-              <li><span>Background</span> Chartered Accountant; AIR 103, UPSC CSE 2015</li>
-              <li><span>Hometown</span> Hyderabad</li>
-              <li><span>Earlier postings</span> Embassy of India, Beijing; MEA Divisions, New Delhi</li>
-            </ul>
-          </div>
-
-          <div class="md:col-span-8">
-            <p class="eyebrow">A Message from the RPO</p>
-            <h2 class="section-title section-title--md">A note to the citizens we serve.</h2>
-
-            <div class="prose-block">
-              <p class="placeholder-note">[ Personal message from the Regional Passport Officer — 200–300 words — pending. ]</p>
-              <p>For five decades, this office has had one job: to help the people of our region cross borders for work, family, study, and faith — with dignity, speed, and trust. The 50-year milestone is a moment to thank the citizens who have placed that trust in us, and the staff, past and present, who have honoured it.</p>
-              <p>This commemorative site is a small way to share what we've built together — and a promise that we will keep listening, keep improving, and keep showing up.</p>
-              <p class="text-sm text-navy-500 italic">— Draft placeholder text. Final message to be provided by the RPO's office.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== SECTION 4 — ACHIEVEMENTS ============== -->
+    <!-- ============== SECTION 3 — ACHIEVEMENTS ============== -->
+    <!-- (Message from the RPO has moved to position 5, after Reforms.) -->
     <section id="achievements" class="section">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <header class="section-header">
@@ -274,7 +254,7 @@
           </li>
           <li class="achievement-card achievement-card--highlight">
             <span class="achievement-stat">National Award</span>
-            <span class="achievement-label">For "Innovative Steps and Citizen-Centric Initiatives" — Passport Seva Diwas, June 2025</span>
+            <span class="achievement-label">For "Innovative Steps and Citizen-Centric Initiatives" at Passport Seva Diwas, June 2025</span>
           </li>
           <li class="achievement-card">
             <span class="achievement-stat">Year-long</span>
@@ -311,7 +291,7 @@
           </li>
           <li class="reform-card">
             <h3>Swachhata &amp; Rainwater Harvesting</h3>
-            <p>A revitalised office premises and on-site rainwater harvesting — small habits, sustained over time.</p>
+            <p>A revitalised office premises and on-site rainwater harvesting. Small habits, sustained over time.</p>
           </li>
           <li class="reform-card">
             <h3>Constitution @75 Envelope</h3>
@@ -329,205 +309,395 @@
       </div>
     </section>
 
-    <!-- ============== SECTION 6 — CITIZENS SPEAK ============== -->
-    <section id="citizens" class="section">
+    <!-- ============== SECTION 5 — MESSAGE FROM THE RPO ============== -->
+    <section id="message" class="section">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <header class="section-header">
-          <p class="eyebrow">Citizens Speak</p>
-          <h2 class="section-title">In the words of the people we serve.</h2>
-          <p class="section-lede">Testimonials are being collected. The quotes below are placeholders.</p>
-        </header>
+        <article class="letter">
+          <p class="letter-eyebrow">From the Regional Passport Officer</p>
+          <h2 class="letter-headline">A note to the citizens we serve.</h2>
+          <p class="letter-dateline">Hyderabad, 2026</p>
 
-        <ul class="testimonial-grid">
-          <li class="testimonial-card">
-            <blockquote>
-              <p>"My passport came through faster than I'd ever hoped — and the Thursday walk-in helped me sort a confusion the same day."</p>
-            </blockquote>
-            <footer class="testimonial-author">— Applicant, Secunderabad <span class="placeholder-tag">placeholder</span></footer>
-          </li>
-          <li class="testimonial-card">
-            <blockquote>
-              <p>"The staff explained the Tatkal process patiently, even though I was anxious. Felt reassured throughout."</p>
-            </blockquote>
-            <footer class="testimonial-author">— Applicant, Hyderabad <span class="placeholder-tag">placeholder</span></footer>
-          </li>
-          <li class="testimonial-card">
-            <blockquote>
-              <p>"Got an SMS the moment my application moved each step. The transparency really matters."</p>
-            </blockquote>
-            <footer class="testimonial-author">— Applicant, Warangal <span class="placeholder-tag">placeholder</span></footer>
-          </li>
-        </ul>
+          <div class="letter-body">
+            <p>For five decades, this office has had one job: to help the people of our region cross borders for work, family, study, and faith, with dignity, speed, and trust. The 50-year milestone is a moment to thank the citizens who have placed that trust in us, and the staff, past and present, who have honoured it.</p>
+            <p>This commemorative site is a small way to share what we have built together, and a promise that we will keep listening, keep improving, and keep showing up.</p>
+          </div>
+
+          <p class="letter-signature">
+            <span class="letter-signature__name">Jonnalagadda Snehaja, IFS</span>
+            <span class="letter-signature__title">Regional Passport Officer, Hyderabad</span>
+          </p>
+        </article>
       </div>
     </section>
 
-    <!-- ============== SECTION 7 — TELUGU FAQ VIDEOS ============== -->
-    <section id="videos" class="section section--alt">
+    <!-- ============== Citizens Speak section was removed; will return when real
+         quotes with consent are collected. PRODUCT.md forbids invented citizen
+         voices, so the placeholder testimonials shipped today were deleted. -->
+
+    <!-- ============== SECTION 6 — TELUGU FAQ VIDEOS ============== -->
+    <section id="videos" class="section">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
-        <header class="section-header">
-          <p class="eyebrow">Telugu FAQ Video Library</p>
-          <h2 class="section-title">Your most common questions, answered in short videos.</h2>
-          <p class="section-lede">Twelve short videos (60–120 seconds each) covering the questions citizens ask most often. <strong>Coming soon</strong> — videos will be in Telugu, with English subtitles, hosted on YouTube.</p>
+        <header class="videolist-header">
+          <p class="eyebrow">
+            <span class="t-en">Telugu FAQ Video Library</span>
+            <span class="t-te" lang="te">తెలుగు FAQ వీడియో లైబ్రరీ</span>
+          </p>
+          <h2 class="videolist-headline">
+            <span class="t-en">Nineteen short videos, one per service area.</span>
+            <span class="t-te" lang="te">పంతొమ్మిది చిన్న వీడియోలు, ఒక్కో సేవా విభాగానికి ఒకటి.</span>
+          </h2>
+          <p class="videolist-dateline">
+            <span class="t-en">Releases on 24 June 2026, Passport Seva Diwas</span>
+            <span class="t-te" lang="te">విడుదల: 24 జూన్ 2026, పాస్‌పోర్ట్ సేవా దివస్</span>
+          </p>
+          <p class="videolist-intro">
+            <span class="t-en">Each video runs 60 to 120 seconds, in Telugu with English subtitles, covering one of the 19 service areas listed on <a class="link" href="https://services1.passportindia.gov.in/psp/Faqs" target="_blank" rel="noopener">passportindia.gov.in</a>. Hosted on YouTube at <a class="link" href="https://x.com/rpohyderabad" target="_blank" rel="noopener">@rpohyderabad</a>.</span>
+            <span class="t-te" lang="te">ప్రతి వీడియో 60 నుండి 120 సెకన్లు, తెలుగులో ఇంగ్లీష్ సబ్‌టైటిల్స్‌తో, <a class="link" href="https://services1.passportindia.gov.in/psp/Faqs" target="_blank" rel="noopener">passportindia.gov.in</a> లో జాబితా చేసిన 19 సేవా విభాగాలలో ఒక్కో దానిని కవర్ చేస్తుంది. <a class="link" href="https://x.com/rpohyderabad" target="_blank" rel="noopener">@rpohyderabad</a> వద్ద YouTube లో హోస్ట్ చేయబడింది.</span>
+          </p>
         </header>
 
-        <ul class="video-grid">
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">01</span>
-              <h3>How to apply for a new passport</h3>
-              <p>A walk-through of the official passportindia.gov.in flow, end to end.</p>
+        <ol class="videolist" aria-label="Forthcoming Telugu FAQ videos">
+          <li class="videolist-item">
+            <span class="videolist-item__num">01</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Services Available</span>
+                <span class="t-te" lang="te">అందుబాటులో ఉన్న సేవలు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Every passport service the office offers, in one walk-through.</span>
+                <span class="t-te" lang="te">కార్యాలయం అందించే ప్రతి పాస్‌పోర్ట్ సేవ, ఒకే వీడియోలో.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">02</span>
-              <h3>What documents do I need?</h3>
-              <p>Address proof, date-of-birth proof, photographs — what counts and what doesn't.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">02</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Special Cases of Minors</span>
+                <span class="t-te" lang="te">మైనర్ల ప్రత్యేక కేసులు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">When a minor's application needs extra attention or documentation.</span>
+                <span class="t-te" lang="te">మైనర్ దరఖాస్తుకు అదనపు శ్రద్ధ లేదా పత్రాలు అవసరమైనప్పుడు.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">03</span>
-              <h3>Tatkal — what it is, and when to use it</h3>
-              <p>Eligibility, fees, timelines — and when Tatkal is (and isn't) the right choice.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">03</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Where to Apply</span>
+                <span class="t-te" lang="te">ఎక్కడ దరఖాస్తు చేయాలి</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">How to find your nearest PSK or POPSK in Telangana.</span>
+                <span class="t-te" lang="te">తెలంగాణలో మీకు సమీపంలోని PSK లేదా POPSK ను ఎలా కనుగొనాలి.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">04</span>
-              <h3>How long will my passport take?</h3>
-              <p>Realistic timelines including police verification, dispatch, and delivery.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">04</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Application Form</span>
+                <span class="t-te" lang="te">దరఖాస్తు ఫారం</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Filling the online form, section by section.</span>
+                <span class="t-te" lang="te">ఆన్‌లైన్ ఫారాన్ని విభాగాల వారీగా నింపడం.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">05</span>
-              <h3>How to track your application</h3>
-              <p>File number, online tracking, SMS alerts — what each one tells you.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">05</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Fee Payment</span>
+                <span class="t-te" lang="te">ఫీజు చెల్లింపు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Who pays what, when, and how.</span>
+                <span class="t-te" lang="te">ఎవరు ఏమి, ఎప్పుడు, ఎలా చెల్లించాలి.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">06</span>
-              <h3>The appointment process</h3>
-              <p>Booking, rescheduling, walk-in vs online — a clear comparison.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">06</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Password Management</span>
+                <span class="t-te" lang="te">పాస్‌వర్డ్ నిర్వహణ</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Resetting and recovering your passportindia.gov.in account.</span>
+                <span class="t-te" lang="te">మీ passportindia.gov.in ఖాతాను రీసెట్ చేయడం, రికవర్ చేయడం.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">07</span>
-              <h3>What is the Thursday walk-in?</h3>
-              <p>Who qualifies, what to bring, what to expect when you arrive.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">07</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Police Verification</span>
+                <span class="t-te" lang="te">పోలీస్ ధృవీకరణ</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">What police verification covers and how to prepare.</span>
+                <span class="t-te" lang="te">పోలీస్ ధృవీకరణలో ఏమి ఉంటుంది, ఎలా సిద్ధం కావాలి.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">08</span>
-              <h3>Renewal vs Re-issue</h3>
-              <p>Two different things, often confused. Here's what each one means for you.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">08</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Postal Dispatch and Tracking</span>
+                <span class="t-te" lang="te">పోస్టల్ డిస్‌పాచ్, ట్రాకింగ్</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Tracking your passport from the office to your door.</span>
+                <span class="t-te" lang="te">కార్యాలయం నుండి మీ ఇంటి వరకు మీ పాస్‌పోర్ట్‌ను ట్రాక్ చేయడం.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">09</span>
-              <h3>Lost your passport — what now?</h3>
-              <p>Filing a police FIR, the re-application steps, and what to expect on timelines.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">09</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Call Centre</span>
+                <span class="t-te" lang="te">కాల్ సెంటర్</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">When to call, what to ask, what to have ready.</span>
+                <span class="t-te" lang="te">ఎప్పుడు కాల్ చేయాలి, ఏమి అడగాలి, ఏమి సిద్ధంగా ఉంచుకోవాలి.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">10</span>
-              <h3>Minor's passport — what's special?</h3>
-              <p>Parents' documents, consent rules, and how the process differs for children.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">10</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Lost or Damaged Passports</span>
+                <span class="t-te" lang="te">కోల్పోయిన లేదా దెబ్బతిన్న పాస్‌పోర్ట్‌లు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">The first steps if your passport is lost or damaged.</span>
+                <span class="t-te" lang="te">మీ పాస్‌పోర్ట్ కోల్పోతే లేదా దెబ్బతింటే తీసుకోవలసిన తొలి చర్యలు.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">11</span>
-              <h3>Police verification — what happens?</h3>
-              <p>Pre- and post-verification, what police check, and how to prepare.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">11</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Tatkaal Passports</span>
+                <span class="t-te" lang="te">తత్కాల్ పాస్‌పోర్ట్‌లు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">When Tatkaal applies, what it costs, what changes.</span>
+                <span class="t-te" lang="te">తత్కాల్ ఎప్పుడు వర్తిస్తుంది, దాని ఖర్చు ఎంత, ఏమి మారుతుంది.</span>
+              </p>
             </div>
           </li>
-          <li class="video-card" data-video-id="">
-            <div class="video-thumb"><span class="video-soon">Coming soon</span></div>
-            <div class="video-meta">
-              <span class="video-num">12</span>
-              <h3>e-Passport — what changed?</h3>
-              <p>How the new chip works, what it means at immigration, and what citizens should know.</p>
+          <li class="videolist-item">
+            <span class="videolist-item__num">12</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Identity Certificate</span>
+                <span class="t-te" lang="te">గుర్తింపు ధృవీకరణ పత్రం</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Who needs one and how to apply.</span>
+                <span class="t-te" lang="te">ఎవరికి అవసరం, ఎలా దరఖాస్తు చేయాలి.</span>
+              </p>
             </div>
           </li>
-        </ul>
+          <li class="videolist-item">
+            <span class="videolist-item__num">13</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Miscellaneous Services</span>
+                <span class="t-te" lang="te">ఇతర సేవలు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Smaller passport-related requests, in brief.</span>
+                <span class="t-te" lang="te">చిన్న పాస్‌పోర్ట్ సంబంధిత అభ్యర్థనలు, క్లుప్తంగా.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">14</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">LoC Permit</span>
+                <span class="t-te" lang="te">LoC అనుమతి పత్రం</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Permits for travel across the Line of Control.</span>
+                <span class="t-te" lang="te">నియంత్రణ రేఖను దాటి ప్రయాణం కోసం అనుమతులు.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">15</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Passport Seva Camp</span>
+                <span class="t-te" lang="te">పాస్‌పోర్ట్ సేవా శిబిరం</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Mobile camps and outreach drives across Telangana.</span>
+                <span class="t-te" lang="te">తెలంగాణ అంతటా మొబైల్ శిబిరాలు, ఔట్‌రీచ్ డ్రైవ్‌లు.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">16</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Surrender Certificate</span>
+                <span class="t-te" lang="te">లొంగుబాటు ధృవీకరణ పత్రం</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">What it is and when you need to file one.</span>
+                <span class="t-te" lang="te">ఇది ఏమిటి, ఎప్పుడు దాఖలు చేయవలసి ఉంటుంది.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">17</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Appeal</span>
+                <span class="t-te" lang="te">అప్పీల్</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Filing an appeal if your application is rejected.</span>
+                <span class="t-te" lang="te">మీ దరఖాస్తు తిరస్కరించబడితే అప్పీల్ దాఖలు చేయడం.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">18</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">Alias Name</span>
+                <span class="t-te" lang="te">మారుపేరు</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">Adding or correcting an alias on your passport.</span>
+                <span class="t-te" lang="te">మీ పాస్‌పోర్ట్‌లో మారుపేరును జోడించడం లేదా సరిదిద్దడం.</span>
+              </p>
+            </div>
+          </li>
+          <li class="videolist-item">
+            <span class="videolist-item__num">19</span>
+            <div>
+              <h3 class="videolist-item__title">
+                <span class="t-en">ePassport</span>
+                <span class="t-te" lang="te">ఈ-పాస్‌పోర్ట్</span>
+              </h3>
+              <p class="videolist-item__summary">
+                <span class="t-en">How the chip works and what changes for travellers.</span>
+                <span class="t-te" lang="te">చిప్ ఎలా పనిచేస్తుంది, ప్రయాణికులకు ఏమి మారుతుంది.</span>
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="translations-note">
+          <span class="t-en">Telugu translations on this page are draft, awaiting review by the RPO Hyderabad team. Final wording will be confirmed with native speakers before launch.</span>
+          <span class="t-te" lang="te">ఈ పేజీలోని తెలుగు అనువాదాలు ముసాయిదా రూపంలో ఉన్నాయి, RPO హైదరాబాద్ బృందం సమీక్షించబడాల్సి ఉంది. ప్రారంభించడానికి ముందు మాతృభాష మాట్లాడేవారితో తుది పదాలు ఖరారు చేయబడతాయి.</span>
+        </p>
       </div>
     </section>
 
-    <!-- ============== SECTION 8 — SERVICES AT A GLANCE ============== -->
+    <!-- ============== SECTION 7 — SERVICES AT A GLANCE ============== -->
     <section id="services" class="section">
       <div class="mx-auto max-w-6xl px-4 sm:px-6">
         <header class="section-header">
-          <p class="eyebrow">Services at a Glance</p>
-          <h2 class="section-title">Everything you need, in one place.</h2>
-          <p class="section-lede">All applications are submitted through the official portal — <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="link">passportindia.gov.in</a>. This page is a quick reference, not the application portal.</p>
+          <p class="eyebrow">
+            <span class="t-en">Services at a Glance</span>
+            <span class="t-te" lang="te">సేవలు ఒక చూపులో</span>
+          </p>
+          <h2 class="section-title">
+            <span class="t-en">Everything you need, in one place.</span>
+            <span class="t-te" lang="te">మీకు కావలసినది అంతా, ఒకే చోట.</span>
+          </h2>
+          <p class="section-lede">
+            <span class="t-en">All applications are submitted through the official portal at <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="link">passportindia.gov.in</a>. This page is a quick reference, not the application portal.</span>
+            <span class="t-te" lang="te">అన్ని దరఖాస్తులు అధికారిక పోర్టల్ <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="link">passportindia.gov.in</a> ద్వారా సమర్పించబడతాయి. ఈ పేజీ త్వరిత సూచన మాత్రమే, దరఖాస్తు పోర్టల్ కాదు.</span>
+          </p>
         </header>
 
         <div class="services-grid">
           <div class="service-block">
-            <h3>Passport Types</h3>
+            <h3>
+              <span class="t-en">Passport Types</span>
+              <span class="t-te" lang="te">పాస్‌పోర్ట్ రకాలు</span>
+            </h3>
             <ul>
-              <li>Fresh / Re-issue</li>
-              <li>Tatkal (urgent)</li>
-              <li>Minor's passport</li>
-              <li>Police Clearance Certificate</li>
-              <li>Diplomatic / Official (eligibility-based)</li>
+              <li><span class="t-en">Fresh / Re-issue</span><span class="t-te" lang="te">కొత్తది / తిరిగి జారీ</span></li>
+              <li><span class="t-en">Tatkal (urgent)</span><span class="t-te" lang="te">తత్కాల్ (అత్యవసరం)</span></li>
+              <li><span class="t-en">Minor's passport</span><span class="t-te" lang="te">మైనర్ పాస్‌పోర్ట్</span></li>
+              <li><span class="t-en">Police Clearance Certificate</span><span class="t-te" lang="te">పోలీస్ క్లియరెన్స్ ధృవీకరణ పత్రం</span></li>
+              <li><span class="t-en">Diplomatic / Official (eligibility-based)</span><span class="t-te" lang="te">డిప్లొమాటిక్ / అధికారిక (అర్హత ఆధారంగా)</span></li>
             </ul>
           </div>
 
           <div class="service-block">
-            <h3>Typical Timelines</h3>
+            <h3>
+              <span class="t-en">Typical Timelines</span>
+              <span class="t-te" lang="te">సాధారణ కాలపరిమితులు</span>
+            </h3>
             <ul>
-              <li>Regular: <strong>5–7 working days</strong> (post verification)</li>
-              <li>Tatkal: <strong>1–3 working days</strong></li>
-              <li>Speed Post delivery: <strong>~24 hours</strong> after dispatch</li>
-              <li>Appointment wait: <strong>1–10 days</strong> regular; <strong>1–5 days</strong> Tatkal</li>
+              <li><span class="t-en">Regular: <strong>5 to 7 working days</strong> (post verification)</span><span class="t-te" lang="te">సాధారణం: <strong>5 నుండి 7 పని దినాలు</strong> (ధృవీకరణ తర్వాత)</span></li>
+              <li><span class="t-en">Tatkal: <strong>1 to 3 working days</strong></span><span class="t-te" lang="te">తత్కాల్: <strong>1 నుండి 3 పని దినాలు</strong></span></li>
+              <li><span class="t-en">Speed Post delivery: <strong>about 24 hours</strong> after dispatch</span><span class="t-te" lang="te">స్పీడ్ పోస్ట్ డెలివరీ: డిస్‌పాచ్ తర్వాత <strong>సుమారు 24 గంటలు</strong></span></li>
+              <li><span class="t-en">Appointment wait: <strong>1 to 10 days</strong> regular; <strong>1 to 5 days</strong> Tatkal</span><span class="t-te" lang="te">అపాయింట్‌మెంట్ నిరీక్షణ: సాధారణం <strong>1 నుండి 10 దినాలు</strong>; తత్కాల్ <strong>1 నుండి 5 దినాలు</strong></span></li>
             </ul>
           </div>
 
           <div class="service-block">
-            <h3>Documents Checklist</h3>
+            <h3>
+              <span class="t-en">Documents Checklist</span>
+              <span class="t-te" lang="te">పత్రాల జాబితా</span>
+            </h3>
             <ul>
-              <li>Proof of present address</li>
-              <li>Proof of date of birth</li>
-              <li>Photographs (per official spec)</li>
-              <li>Old passport (for re-issue)</li>
-              <li>Parental documents (for minors)</li>
+              <li><span class="t-en">Proof of present address</span><span class="t-te" lang="te">ప్రస్తుత చిరునామా రుజువు</span></li>
+              <li><span class="t-en">Proof of date of birth</span><span class="t-te" lang="te">పుట్టిన తేదీ రుజువు</span></li>
+              <li><span class="t-en">Photographs (per official spec)</span><span class="t-te" lang="te">ఫోటోలు (అధికారిక స్పెసిఫికేషన్ ప్రకారం)</span></li>
+              <li><span class="t-en">Old passport (for re-issue)</span><span class="t-te" lang="te">పాత పాస్‌పోర్ట్ (తిరిగి జారీ కోసం)</span></li>
+              <li><span class="t-en">Parental documents (for minors)</span><span class="t-te" lang="te">తల్లిదండ్రుల పత్రాలు (మైనర్ల కోసం)</span></li>
             </ul>
-            <p class="service-note">Full checklists on the official portal.</p>
+            <p class="service-note">
+              <span class="t-en">Full checklists on the official portal.</span>
+              <span class="t-te" lang="te">పూర్తి జాబితాలు అధికారిక పోర్టల్‌లో ఉన్నాయి.</span>
+            </p>
           </div>
 
           <div class="service-block">
-            <h3>Office Hours</h3>
+            <h3>
+              <span class="t-en">Office Hours</span>
+              <span class="t-te" lang="te">కార్యాలయ సమయాలు</span>
+            </h3>
             <ul>
-              <li>Mon – Sun: <strong>9:30 AM – 4:00 PM</strong></li>
-              <li>Thursday walk-in: <strong>9:30 AM – 12:30 PM</strong></li>
-              <li>Online inquiry slots: <strong>Mon, Tue, Fri</strong></li>
+              <li><span class="t-en">Mon to Sun: <strong>9:30 AM to 4:00 PM</strong></span><span class="t-te" lang="te">సోమ నుండి ఆది: <strong>ఉదయం 9:30 నుండి సాయంత్రం 4:00</strong></span></li>
+              <li><span class="t-en">Thursday walk-in: <strong>9:30 AM to 12:30 PM</strong></span><span class="t-te" lang="te">గురువారం వాక్-ఇన్: <strong>ఉదయం 9:30 నుండి 12:30</strong></span></li>
+              <li><span class="t-en">Online inquiry slots: <strong>Mon, Tue, Fri</strong></span><span class="t-te" lang="te">ఆన్‌లైన్ విచారణ స్లాట్‌లు: <strong>సోమ, మంగళ, శుక్ర</strong></span></li>
             </ul>
           </div>
         </div>
 
         <div class="cta-bar">
-          <p>Ready to start your application?</p>
+          <p>
+            <span class="t-en">Ready to start your application?</span>
+            <span class="t-te" lang="te">మీ దరఖాస్తు ప్రారంభించడానికి సిద్ధమా?</span>
+          </p>
           <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="btn btn-primary">
-            Go to passportindia.gov.in
+            <span class="t-en">Go to passportindia.gov.in</span>
+            <span class="t-te" lang="te">passportindia.gov.in కు వెళ్లండి</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="ml-1.5">
               <path d="M7 17L17 7M9 7h8v8"/>
             </svg>
@@ -594,7 +764,14 @@
       <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12">
         <div class="grid md:grid-cols-3 gap-8 items-start">
           <div>
-            <p class="font-serif text-xl font-semibold text-paper">RPO Hyderabad</p>
+            <span class="footer-signature">
+              <span class="civic-mark civic-mark--sm civic-mark--on-dark" role="img" aria-label="Tricolour, the national flag of India">
+                <span class="civic-mark__band--saffron"></span>
+                <span class="civic-mark__band--white"></span>
+                <span class="civic-mark__band--green"></span>
+              </span>
+              <span class="font-serif text-xl font-semibold text-paper">RPO Hyderabad</span>
+            </span>
             <p class="text-sm text-paper/70 mt-2">Regional Passport Office, Hyderabad<br>Ministry of External Affairs<br>Government of India</p>
           </div>
           <div class="md:text-center text-sm text-paper/70">

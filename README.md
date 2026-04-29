@@ -63,38 +63,29 @@ All asset paths are relative, so the site works at any subpath.
 
 ## Tech notes
 
-- **Tailwind CSS** is loaded via the Play CDN — fine for prototyping. For a production launch, switch to a proper Tailwind build to avoid the runtime warning, drop bundle size, and pin a version.
-- **No analytics, no forms, no data collection.** This site never collects citizen information — by design (see §8 of the project plan).
-- **Videos** lazy-load: cards only fetch a YouTube iframe after a click. Until real YouTube IDs are added, cards display as "Coming soon" and are inert.
+- **Tailwind CSS** is loaded via the Play CDN, fine for prototyping. For a production launch, switch to a proper Tailwind build to avoid the runtime warning, drop bundle size, and pin a version.
+- **No analytics, no forms, no data collection.** This site never collects citizen information, by design (see §8 of the project plan).
+- **Bilingual (English / Telugu)** rendering, with a toggle in the header. The hero, the Videos section (header + 19 items), and the Services section currently ship in both languages. Telugu translations are explicitly marked as draft pending review by the RPO Hyderabad team. See `index.html` and search for `t-en` / `t-te` siblings to extend coverage.
+- **Telugu fonts:** Mandali (display) and Noto Sans Telugu (body), loaded via Google Fonts.
+- **Videos:** the Videos section is currently a numbered editorial list of 19 forthcoming topics. There is no inline video player. When the Telugu FAQ video library goes live, link each item to the YouTube playlist or embed individual videos as a follow-up pass.
 
 ---
 
 ## What to swap before launch
 
 ### Copy
-- [ ] **Personal message from the RPO** (`#message` section) — current text is a placeholder.
-- [ ] **Citizen testimonials** (`#citizens` section) — three placeholder quotes; collect real ones with consent.
-- [ ] **Telugu video titles & summaries** — currently English-only; add Telugu copy after native-speaker review.
+- [ ] **Letter from the RPO** (`#message` section) — currently a clean draft signed "Jonnalagadda Snehaja, IFS." Replace with the officer's final wording when supplied.
+- [ ] **Telugu translations** — drafted in good faith, marked as `t-te` siblings in `index.html`, and disclosed to readers via the "translations are draft" note that appears in the Videos section in Telugu mode. **Have native speakers verify every Telugu string before launch.**
+- [ ] **Sections still English-only** — History, Achievements, Reforms, Message, Contact, Footer. Wrap each translatable string in `<span class="t-en">…</span><span class="t-te" lang="te">…</span>` to extend bilingual coverage.
 
-### Imagery (replace `assets/placeholder.svg` references in `index.html`)
-- [ ] Portrait of RPO Snehaja (Section: Message — `<img src="assets/placeholder.svg" ...>`)
-- [ ] Office exterior / interior photos (optional hero or section accents)
-- [ ] National Award ceremony photo (June 2025)
-- [ ] Art & Calligraphy Exhibition photos
-- [ ] Constitution @75 commemorative envelope photo
-- [ ] Historical photos from 1976 onward, if available
+### Imagery
+- [ ] **`og:image` meta tag** in `index.html` still points at `assets/placeholder.svg`. Replace with a 1200×630 PNG or JPG share image.
+- [ ] No other `placeholder.svg` references remain in user-visible markup. Add real photographs (office exterior / interior, National Award ceremony, Art & Calligraphy Exhibition, Constitution @75 envelope, historical photos) when sourced — but only with explicit consent for any people who appear, per PRODUCT.md's anti-reference on stock imagery.
 
-### Videos (in `index.html`)
-For each `.video-card`, set the `data-video-id` attribute to the real YouTube video ID:
-
-```html
-<li class="video-card" data-video-id="dQw4w9WgXcQ">
-```
-
-Once `data-video-id` is non-empty, the card becomes clickable and loads the YouTube embed.
-
-### Open Graph / social preview
-- [ ] Replace `assets/placeholder.svg` in the `og:image` meta tag with a real share image (1200×630 PNG/JPG).
+### Videos
+When the 19 Telugu FAQ videos go live on YouTube at `@rpohyderabad`:
+1. Wrap each `<h3 class="videolist-item__title">` in an `<a href="…">` pointing at the relevant YouTube video or playlist segment.
+2. Or, if you prefer inline embeds, design a follow-up pass that swaps the editorial list for an embedded player UI. The current section ships intentionally with no fake "Coming soon" tiles — the editorial list is honest about pre-launch state.
 
 ---
 
